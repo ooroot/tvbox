@@ -8,7 +8,7 @@ var rule = {
 	title:'点播',
 	host:'http://tv.jsp47.com',
 	homeUrl:'',
-    searchUrl:'https://search.video.iqiyi.com/o?if=html5&key=**&pageNum=fypage&pos=1&pageSize=25&site=iqiyi',
+    searchUrl:'https://www.swsixtwo.top/cj.php?q=**&pageNum=fypage',
     searchable:2,
 	quickSearch:1,
 	multi:1,
@@ -47,7 +47,8 @@ var rule = {
                 VOD.vod_content = it.content ? it.content : "特别提醒:ㅤ友情提示您请勿相信影片中的广告，以免上当受骗";
                 VOD.vod_year = it.year;
                 VOD.vod_pic = it.pic ? it.pic : "http://114.100.48.52:18008/movjpg/" + it.name + ".jpg";
-                let names = it.name +"  ("+ (index+1) +")";
+                //let names = it.name +"  ("+ (index+1) +")";
+                let names = it.name;
                 let playEsp = it.source.eps;
                 playEsp.forEach(function(it) {
                     let source = names;
@@ -75,18 +76,17 @@ var rule = {
 		let d = [];
 		let html = request(input);
 		let json = JSON.parse(html);
-		json.data.docinfos.forEach(function(data) {
-            let channelName = data.albumDocInfo.channel.split(',')[0];
-            if (channelName.includes('电影') || channelName.includes('电视剧') || channelName.includes('综艺') || channelName.includes('动漫') || channelName.includes('少儿')) {
+		json.data.forEach(function(data) {
+            data.list.forEach(function(it) {
                 d.push({
-                    url: "https://www.tycng.com/caiji.php?jx=" + data.albumDocInfo.albumTitle,
-                    title: data.albumDocInfo.albumTitle,
-                    img: data.albumDocInfo.albumVImage,
-                    content:data.albumDocInfo.channel,
-                    desc: data.albumDocInfo.tvFocus
+                    url: "https://www.swsixtwo.top/cj.php?id=" + it.id + "&port=" + data.port,
+                    title: it.name + "【" + data.portname + "】",
+                    img: it.pic,
+                    content:it.content,
+                    desc: it.remarks + "," + it.type_name
                 })
-            }
+            });            
 		});
 		setResult(d);
-	`    
+	` 
 }
