@@ -1,8 +1,6 @@
 {
   "spider": "./jar/fan.txt;md5;f6dd09061793aa1f499be0ffebaf5f67",
   "lives": [
-    {"name": "migu","type": 0,"url": "https://gitee.com/dream-deve/migu_video/raw/main/interface.txt","playerType": 1,"ua": "okhttp/3.8.1","timeout": 20,"epg": "https://epg.112114.xyz/?ch={name}&date={date}","logo": "https://epg.112114.xyz/logo/{name}.png"},
-    {"name": "fmm","type": 0,"url": "https://live.fanmingming.com/tv/m3u/ipv6.m3u","playerType": 1,"ua": "okhttp/3.8.1","timeout": 20,"epg": "https://epg.112114.xyz/?ch={name}&date={date}","logo": "https://epg.112114.xyz/logo/{name}.png"},
     {"name": "live","type": 0,"url": "https://epg.pw/test_channels.m3u","playerType": 1,"ua": "okhttp/3.8.1","timeout": 20,"epg": "https://epg.112114.xyz/?ch={name}&date={date}","logo": "https://epg.112114.xyz/logo/{name}.png"},
     {"name": "ipv6","type": 0,"url": "./tvboxtv.txt","playerType": 1,"ua": "okhttp/3.8.1","timeout": 20,"epg": "https://epg.112114.xyz/?ch={name}&date={date}","logo": "https://epg.112114.xyz/logo/{name}.png"}
   ],
@@ -98,6 +96,8 @@
     {"key": "初中课堂","name": "📚初中┃课堂","type": 3,"api": "csp_BiliGuard","style": {"type": "rect","ratio": 1.597},"searchable": 0,"quickSearch": 0,"changeable": 0,"ext": {"json": "https://nos.netease.com/ysf/8f55d520f8d70056695740ef151744a7.txt"}},
     {"key": "高中教育","name": "📚高中┃课堂","type": 3,"api": "csp_BiliGuard","style": {"type": "rect","ratio": 1.597},"searchable": 0,"quickSearch": 0,"changeable": 0,"ext": {"json": "https://nos.netease.com/ysf/c66a4b5356141c49fd45ec51568017b4.txt"}},
     {"key": "奇优","name": "影视 | ️奇优[直连]","type": 3,"api": "csp_XBPQ","searchable": 1,"quickSearch": 1,"filterable": 1,"ext": "./json/奇优.json","jar": "./jar/Yoursmile.jar;md5;97796a79a781055669f2d5442439dc5f"},
+    {"key": "电影天堂","name": "影视 | 电影天堂","type": 1,"api": "http://caiji.dyttzyapi.com/api.php/provide/vod","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 1,"playerType": 2},
+    {"key": "天涯采集","name": "影视 | 天涯","type": 1,"api": "http://tyyszy.com/api.php/provide/vod","style": {"type": "rect","ratio": 1.33},"searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 1,"playerType": 2},
     {"key": "量子","name": "影视 | 量子[直连]","type": 1,"api": "https://cj.lziapi.com/api.php/provide/vod/","searchable": 1,"categories": ["动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","国产剧","香港剧","韩国剧","欧美剧","记录片","台湾剧","日本剧","海外剧","泰国剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日韩动漫","欧美动漫","港台动漫","海外动漫"]},
     {"key": "非凡","name": "影视 | 非凡[直连]","type": 1,"api": "http://ffzy.tv/api.php/provide/vod/","searchable": 1,"categories": ["动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","国产剧","香港剧","韩国剧","欧美剧","记录片","台湾剧","日本剧","海外剧","泰国剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日韩动漫","欧美动漫","港台动漫","海外动漫"]},
     {"key": "索尼","name": "影视 | 索尼[直连]","type": 0,"api": "https://suoniapi.com/api.php/provide/vod/at/xml/","searchable": 1,"categories": ["动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","国产剧","欧美剧","港剧","台剧","韩剧","日剧","泰剧","纪录片","海外剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日韩动漫","欧美动漫","港台动漫","海外动漫","影视解说"]},
