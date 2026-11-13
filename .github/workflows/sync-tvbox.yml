@@ -1,0 +1,51 @@
+name: 同步 master 到 tvbox
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取 tvbox 分支
+        uses: actions/checkout@v7
+        with:
+          ref: tvbox
+          fetch-depth: 0
+
+      - name: 合并 master 到 tvbox
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin master
+          if git merge --no-edit origin/master; then
+            echo "合并干净"
+          else
+            echo "有冲突，按规则解决：CNAME、README.md 留 tvbox 版，其他取 master 版"
+            git diff -z --name-only --diff-filter=U | while IFS= read -r -d '' f; do
+              if [ "$f" = "CNAME" ] || [ "$f" = "README.md" ]; then
+                git checkout --ours -- "$f"
+              else
+                git checkout --theirs -- "$f"
+              fi
+            done
+            if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
+              echo "仍有未解决的冲突，停止"
+              exit 1
+            fi
+            git add -A
+            if git diff --cached --quiet; then
+              git merge --abort
+              echo "解决后无变化，放弃合并"
+            else
+              git commit --no-edit
+            fi
+          fi
+          git push origin tvbox
