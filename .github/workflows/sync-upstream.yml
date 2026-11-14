@@ -28,7 +28,8 @@ jobs:
             echo "合并干净"
           else
             echo "有冲突，按规则解决：CNAME、README.md、run.yml 留 tvbox 版，其他取上游版"
-            git diff -z --name-only --diff-filter=U | while IFS= read -r -d '' f; do
+            mapfile -d '' -t conflicted < <(git diff -z --name-only --diff-filter=U)
+            for f in "${conflicted[@]}"; do
               if [ "$f" = "CNAME" ] || [ "$f" = "README.md" ] || [ "$f" = ".github/workflows/run.yml" ]; then
                 git checkout --ours -- "$f"
               else
