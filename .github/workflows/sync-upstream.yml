@@ -36,11 +36,11 @@ jobs:
                 git checkout --theirs -- "$f"
               fi
             done
+            git add -A
             if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
               echo "仍有未解决的冲突，停止"
               exit 1
             fi
-            git add -A
             if git diff --cached --quiet; then
               git merge --abort
               echo "解决后无变化，放弃合并"
